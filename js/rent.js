@@ -9,22 +9,17 @@ jQuery(document).ready(function () {
         var building_id = $("#building_id").val();
         var area = $("#area").val();
         var floor = $("#floor").val();
+        var pay_method = $("#pay_method").val();
         var house_description = $("#house_description").val();
-        var house_pic = "http://pic.ziroom.com/house_images/g2m1/M00/D6/BC/v800x600_ChAFBluvRESAB54oAAPio8Fp7vY089.jpg";
+        var house_pic = $('#house_pic').val();//"images/house2.jpg";
         
         var myDate = new Date();
-        var register_time = myDate.toLocaleTimeString();
+        year = myDate.getFullYear();
+        month = myDate.getMonth()+1;
+        day=myDate.getDate();
+        var current_time = year+","+month+","+day;
+
         var id = getQueryVariable("user_id");
-        var pay_method;
-        var radio = document.getElementById("pay_ratio");
-        radio = radio.getElementsByTagName("label");
-        for (i=0; i<radio.length; i++){
-            if (radio[i].getAttribute("aria-checked")) {
-                pay_method = i;
-            }
-        }
-        names= new Array("月","季","年");
-        pay_method = names[pay_method];
         
         var house_type;
         var radio = document.getElementById("type_ratio");
@@ -60,26 +55,33 @@ jQuery(document).ready(function () {
             alert("请填写楼号！");
             return false;
         }
+
+        /*var debugInfo = "elevator:"+elevator+"\n";
+        debugInfo += "cash_pledge:"+cash_pledge+"\n";
+        debugInfo += "pay_method:"+pay_method+"\n";
+        debugInfo += "rent_money:"+rent_money+"\n";
+        debugInfo += "city:"+city+"\n";
+        debugInfo += */
         
         
         $.ajax({
             type:"POST",
             contentType:"application/x-www-form-urlencoded",
-            url:"http://localhost:8090/h_create",
+            url:"http://localhost:8090/h_item/h_create",
             data:{
-                "elevator": elevator,
+                "elevator": parseInt(elevator),
                 "cash_pledge": cash_pledge,
                 "pay_method": pay_method,
-                "rent_money": rent_money,
+                "rent_money": parseInt(rent_money),
                 "city": city,
                 "community": comm,
-                "building_id": building_id,
+                "building_id": parseInt(building_id),
                 "house_type": house_type,
-                "area": area,
-                "floor": floor,
+                "area": parseInt(area),
+                "floor": parseInt(floor),
                 "house_description": house_description,
                 "house_pic": house_pic,
-                "register_time": register_time
+                "register_time": current_time
             },
             xhrFields:{withCredentials:true},
             success:function(data){

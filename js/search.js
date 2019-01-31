@@ -52,7 +52,7 @@ jQuery(document).ready(function () {
         debug_info += "租金范围为："+rent_money+"\n";
         debug_info += "当前用户为："+user_id+"\n";
 
-        alert(debug_info);
+        
 
         var appendInfo = "city="+city+"&";
         appendInfo += "pay_method="+pay_method+"&";
@@ -63,7 +63,7 @@ jQuery(document).ready(function () {
         appendInfo += "rent_money="+rent_money+"&";
         appendInfo += "user_id="+user_id;
 
-        alert(appendInfo)
+        
 
         window.location.href="houselist.html?user_login=1&"+appendInfo;
         return false;

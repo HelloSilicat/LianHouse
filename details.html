@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>廉家|房源详情</title>
+    <link rel="stylesheet" href="css/public/bootstrap.min.css">
+    <link rel="stylesheet" href="css/public/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/public/swiper.min.css">
+    <link rel="stylesheet" href="css/public/lightbox.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/login_register.css">
+    <link rel="stylesheet" href="css/search/shop-style.css">
+    <link rel="stylesheet" href="css/public/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/search/style.css">
+    <link rel="stylesheet" href="css/search/responsive.css">
+    <link rel="stylesheet" href="css/search/theme-color-1.css">
+    <link rel="stylesheet" href="css/search/custom.css">
+    <link rel="stylesheet" href="profile/assets/css/layui.css">
+    <script src="js/public/jquery-1.11.0.min.js"></script>
+    <script src="profile/assets/layui.all.js"></script>
+    <script src="js/details.js"></script>
+    <script src="js/public/bootstrap.bundle.min.js"></script>
+    <script src="js/public/jquery.waypoints.min.js"></script>
+    <script src="js/public/lightbox.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/public/sticky.min.js"></script>
+    <script src="js/public/menu.min.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="main-header light-bg">
+            <div class="container" style="padding-right：0px">
+                <div class="row align-items-center">
+                    <div class="col-xl-4 col-lg- col-md-4 col-sm-5 col-7">
+                        <div class="logo" data-animate="fadeInUp" data-delay=".65">
+                            <img src="images/logo.png" width="150" height="20" alt="LianHouse">
+                        </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-8 col-md-4 col-sm-2 col-2">
+                            <div class="menu--inner-area clear-fix">
+                                <div class="menu-wraper">
+                                    <nav data-animate="fadeInUp" data-delay=".8">
+                                        <div class="header-menu pt-sans">
+                                            <ul>
+                                                <li><a id="add1" onclick="link('1')" href="index.html">首页</a></li>
+                                                <li id="li2" style="display:none;"><a id="add2" onclick="link('2');" href="rent.html">委托租房</a></li>
+                                                <li id="li3" style="display:none;"><a id="add3" onclick="link('3');" href="public.html">租房广场</a></li>
+                                                <li id="li1" style="display:none;"><a href="#">我的账户 <i class="fa fa-caret-down"></i></a>
+                                                    <ul>
+                                                        <li><a  id="add4" onclick="link('4');" href="profile/index.html">个人信息</a></li>
+                                                        <li><a href="index.html?user_login=0">退出登陆</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li id="li4" style="display:none;"><a href="register.html">注册</a></li>
+                                                <li id="li5" style="display:none;"><a href="login.html">登陆</a></li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <section class="page-title-wrap" data-bg-img="images/page-header.jpg" data-rjs="2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <div class="page-title" data-animate="fadeInUp" data-delay="1.05">
+                        <h1>房源详情</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr />
+    <section style="background-color:#F8F8F8;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" style="margin-top: 50px;">
+                    <div class="footer-widget" data-animate="fadeInUp" data-delay=".5">
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <img id="house_pic" src="images/house1.jpg" width="500" height="500" />
+                        	</div>
+                                <div class="col-lg-5" style="text-align:left">
+                                    <h2 id="big_house_name">X</h2>
+                                    <div class='product-price'><h3 id="house_rent_money" class="muli font-weight-600">￥<span id="rentMoney"></span>/月</h3>
+                                    </div>
+                                    <div>
+                                        <ul>
+                                            <li>面积：<span id="big_area"></span>㎡</li><br>
+                                            <li>楼层：<span id="big_floor"></span>层</li><br>
+                                            <li>房屋类型：<span id="big_house_type"></span></li><br />
+                                        </ul>
+                                    </div>
+                                    <div class="tagcloud">
+                                        <ul>
+                                            <li><a href="#">温馨舒适</a></li>
+                                            <li><a href="#">近地铁口</a></li>
+                                            <li><a href="#">学区房</a></li>
+                                        </ul>
+                                    </div>
+                                    <br />
+                                    <div class="layui-inline">
+                                        <div class="layui-input-inline">
+                                            <input type="text" class="layui-input" id="time" value="" placeholder="选择范围">
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <button class="btn" id="buy" type="submit">预定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="footer-widget" data-animate="fadeInUp" data-delay=".5">
+                            <div class="product-tabbed" data-animate="fadeInUp" data-delay=".2">
+                                <div class="product--info-review">
+                                    <div class="product--nav-inner mb-30">
+                                        <nav>
+                                            <div class="nav info-tabs">
+                                                <a class="product--nav-item" id="nav-contact-tab" data-toggle="tab" href="#riv">房屋信息</a>
+                                                <a class="product--nav-item active"  data-toggle="tab" href="#dis">房屋描述</a>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                    <div class="tab-content product--review-info">
+                                        <div class="tab-pane fade" id="riv" role="tabpanel">
+                                            <div class="layui-form">
+                                                <table class="layui-table">
+                                                    <colgroup>
+                                                        <col width="100">
+                                                        <col width="100">
+                                                        <col width="100">
+                                                        <col>
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>面积</th>
+                                                            <th>楼层</th>
+                                                            <th>押金方式</th>
+                                                            <th>城市</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="area"></td>
+                                                            <td id="floor"></td>
+                                                            <td id="cashPledge"></td>
+                                                            <td id="city"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table class="layui-table">
+                                                    <colgroup>
+                                                        <col width="100">
+                                                        <col width="100">
+                                                        <col width="100">
+                                                        <col>
+                                                    </colgroup>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>类型</th>
+                                                            <th>小区</th>
+                                                            <th>支付方式</th>
+                                                            <th>电梯</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="houseType"></td>
+                                                            <td id="community"></td>
+                                                            <td id="payMethod"></td>
+                                                            <td id="elevator"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="dis" role="tabpanel">
+                                            <p>
+                                                <font id="houseDescription"></font>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <div class="bottom-footer light-bg" style="text-align:center;">
+        <div class="copyright text-center" style="text-align:center;">
+            <p class="m-0 pt-sans"><a id="add6" onclick="link('6')" href="index.html">LianHouse</a> &copy; Copyright 2018 . All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+
+<script>
+layui.use('laydate', function() {
+  var laydate = layui.laydate;
+  laydate.render({
+    elem: '#time'
+    ,type: 'month'
+    ,range: true
+  });
+})
+</script>
+
+</html>

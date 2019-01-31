@@ -18,11 +18,15 @@
   <link rel="stylesheet" href="css/search/responsive.css">
   <link rel="stylesheet" href="css/search/theme-color-1.css">
   <link rel="stylesheet" href="css/search/custom.css">
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <link rel="stylesheet" href="css/public/element-ui.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   <script src="js/search.js"></script>
   <script src="js/wanted.js"></script>
+  <script type="text/javascript" src="js/public.js"></script>
+  <script src="plugins/waypoints/sticky.min.js"></script>
+  <script src="plugins/swiper/swiper.min.js"></script>
+  <script src="plugins/parsley/parsley.min.js"></script>
 </head>
 
 <body >
@@ -88,86 +92,86 @@
     </div>
   </section>
 
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- 模态框（Modal） -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">寻求房源</h4>
-            </div>
-            <div class="modal-body" id="app">
-<el-form ref="form" :model="form" label-width="80px">
-  <el-form-item  label="房源位置">
-    <el-select id="city" v-model="form.region1" placeholder="请选择区域">
-      <el-option label="北京" value="0"></el-option>
-      <el-option label="上海" value="1"></el-option>
-      <el-option label="广州" value="2"></el-option>
-    </el-select>
-  </el-form-item>
-  
-  <el-form-item  label="小区名称">
-    <el-col :span="15">
-    <el-input id="community" v-model="form.name2" placeholder="请填写小区"></el-input>
-    </el-col>
-  </el-form-item>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">寻求房源</h4>
+        </div>
+        <div class="modal-body" id="app">
+          <el-form ref="form" :model="form" label-width="80px">
+            <el-form-item  label="房源位置">
+              <el-select id="city" v-model="form.region1" placeholder="请选择区域">
+                <el-option label="北京" value="0"></el-option>
+                <el-option label="上海" value="1"></el-option>
+                <el-option label="广州" value="2"></el-option>
+              </el-select>
+            </el-form-item>
 
-  <el-form-item  label="房屋类型">
-    <el-select id="house_type" v-model="form.region2" placeholder="请选择类型">
-      <el-option label="一居" value="0"></el-option>
-      <el-option label="二居" value="1"></el-option>
-      <el-option label="三居及以上" value="2"></el-option>
-    </el-select>
-  </el-form-item>
-  
-  <el-form-item  label="楼层">
-    <el-col :span="15">
-    <el-input id="floor" placeholder="请填写楼层"  ></el-input>
-    </el-col>
-  </el-form-item>
+            <el-form-item  label="小区名称">
+              <el-col :span="15">
+                <el-input id="community" v-model="form.name2" placeholder="请填写小区"></el-input>
+              </el-col>
+            </el-form-item>
 
-  <el-form-item  label="押金方式">
-    <el-col :span="15">
-    <el-input id="cash_pledge" placeholder="请填写押金方式（N个月）"  ></el-input>
-    </el-col>
-  </el-form-item>
+            <el-form-item  label="房屋类型">
+              <el-select id="house_type" v-model="form.region2" placeholder="请选择类型">
+                <el-option label="一居" value="0"></el-option>
+                <el-option label="二居" value="1"></el-option>
+                <el-option label="三居及以上" value="2"></el-option>
+              </el-select>
+            </el-form-item>
 
-  <el-form-item  label="电梯情况">
-    <el-select id="elevator" v-model="form.region3" placeholder="请描述电梯情况">
-      <el-option label="无" value="0"></el-option>
-      <el-option label="有" value="1"></el-option>
-    </el-select>
-  </el-form-item>
+            <el-form-item  label="楼层">
+              <el-col :span="15">
+                <el-input id="floor" placeholder="请填写楼层"  ></el-input>
+              </el-col>
+            </el-form-item>
 
-  <el-form-item  label="支付方式">
-    <el-select id="pay_method"  v-model="form.region4" placeholder="请选择方式">
-      <el-option label="月" value="0"></el-option>
-      <el-option label="季" value="1"></el-option>
-      <el-option label="年" value="2"></el-option>
-    </el-select>
-  </el-form-item>
+            <el-form-item  label="押金方式">
+              <el-col :span="15">
+                <el-input id="cash_pledge" placeholder="请填写押金方式（N个月）"  ></el-input>
+              </el-col>
+            </el-form-item>
 
-  <el-form-item label="租金">
-    <el-col :span="15">
-    <el-input id="rent_money" placeholder="单位：元"  ></el-input>
-    </el-col>
-  </el-form-item>
+            <el-form-item  label="电梯情况">
+              <el-select id="elevator" v-model="form.region3" placeholder="请描述电梯情况">
+                <el-option label="无" value="0"></el-option>
+                <el-option label="有" value="1"></el-option>
+              </el-select>
+            </el-form-item>
+
+            <el-form-item  label="支付方式">
+              <el-select id="pay_method"  v-model="form.region4" placeholder="请选择方式">
+                <el-option label="月" value="0"></el-option>
+                <el-option label="季" value="1"></el-option>
+                <el-option label="年" value="2"></el-option>
+              </el-select>
+            </el-form-item>
+
+            <el-form-item label="租金">
+              <el-col :span="15">
+                <el-input id="rent_money" placeholder="单位：元"  ></el-input>
+              </el-col>
+            </el-form-item>
 
 
-   <el-form-item label="房屋描述">
-    <el-input id="house_description" type="textarea" v-model="form.desc"></el-input>
-  </el-form-item>
-  
-  
-  <el-form-item>
-    <el-button id="wanted" type="primary">确认</el-button>
-  </el-form-item>
- 
-</el-form>
-            </div>
+            <el-form-item label="房屋描述">
+              <el-input id="house_description" type="textarea" v-model="form.desc"></el-input>
+            </el-form-item>
 
-        </div><!-- /.modal-content -->
+
+            <el-form-item>
+              <el-button id="wanted" type="primary">确认</el-button>
+            </el-form-item>
+
+          </el-form>
+        </div>
+
+      </div><!-- /.modal-content -->
     </div><!-- /.modal -->
-</div>
+  </div>
 
 
 
@@ -244,56 +248,86 @@
     </div>
   </section>
 
-  <div class="bottom-footer light-bg" style="text-align:center;">
-    <div class="copyright text-center" style="text-align:center;">
-      <p class="m-0 pt-sans"><a id="add6" onclick="link('6')" href="index.html">LianHouse</a> &copy; Copyright 2018 . All Rights Reserved.</p>
+
+  <section class="pt-120 pb-120 default-bg">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8">
+          <!-- Start Section Title -->
+          <div class="section-title text-center" data-animate="fadeInUp">
+            <span>廉家|精心挑选</span>
+            <h1>推荐优质房源</h1>
+            <p>欢迎入住</p>
+          </div>
+          <!-- End of Section Title -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <!-- News carousel -->
+          <div class="swiper-container-wrap" data-animate="fadeInUp" data-delay=".3">
+            <div class="news-carousel swiper-container">
+              <div id = "best_house" class="swiper-wrapper">
+
+   
+            </div>
+            <div class="swiper-pagination news-pagination slider-pagination-style"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="bottom-footer light-bg" style="text-align:center;">
+      <div class="copyright text-center" style="text-align:center;">
+        <p class="m-0 pt-sans"><a id="add6" onclick="link('6')" href="index.html">LianHouse</a> &copy; Copyright 2018 . All Rights Reserved.</p>
+      </div>
     </div>
-  </div>
 
 
-</body>
+  </body>
 
-<script src="js/public/bootstrap.bundle.min.js"></script>
-<script src="js/public/jquery.waypoints.min.js"></script>
-<script src="js/public/lightbox.min.js"></script>
-<script src="js/index.js"></script>
-<script src="js/public/sticky.min.js"></script>
-<script src="js/public/menu.min.js"></script>
+  <script src="js/public/bootstrap.bundle.min.js"></script>
+  <script src="js/public/jquery.waypoints.min.js"></script>
+  <script src="js/public/lightbox.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/public/sticky.min.js"></script>
+  <script src="js/public/menu.min.js"></script>
 
-<script>
-  function getQueryVariable(variable)
-  {
-   var query = window.location.search.substring(1);
-   var vars = query.split("&");
-   for (var i=0;i<vars.length;i++) {
-     var pair = vars[i].split("=");
-     if(pair[0] == variable){return pair[1];}
+  <script>
+    function getQueryVariable(variable)
+    {
+     var query = window.location.search.substring(1);
+     var vars = query.split("&");
+     for (var i=0;i<vars.length;i++) {
+       var pair = vars[i].split("=");
+       if(pair[0] == variable){return pair[1];}
+     }
+     return(false);
    }
-   return(false);
- }
- function link(idx) {
-  var id = getQueryVariable("user_id");
-  old_href = document.getElementById("add"+idx).href;
-  old_href = old_href + "?user_login=1&user_id=" + id;
-  document.getElementById("add"+idx).href = old_href;
-}
-window.onload = function()
-{
-  var current_url = location.href;
-  var user_status = getQueryVariable("user_login")
-
-  if (user_status != "1") {
-    location.href="404.html";
+   function link(idx) {
+    var id = getQueryVariable("user_id");
+    old_href = document.getElementById("add"+idx).href;
+    old_href = old_href + "?user_login=1&user_id=" + id;
+    document.getElementById("add"+idx).href = old_href;
   }
-}
+  window.onload = function()
+  {
+    var current_url = location.href;
+    var user_status = getQueryVariable("user_login")
+
+    if (user_status != "1") {
+      location.href="404.html";
+    }
+  }
 </script>
 
 
 
 <script>
-new Vue({
-el:'#app',
-data() {
+  new Vue({
+    el:'#app',
+    data() {
       return {
         form: {
           name1: '',
@@ -316,11 +350,11 @@ data() {
           resource3: '',
           desc: ''
         }
-        
+
       }
     },
-    
-})
+
+  })
 </script>
 
 </html>

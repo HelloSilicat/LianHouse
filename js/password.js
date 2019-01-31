@@ -5,7 +5,10 @@ jQuery(document).ready(function () {
         var rep_password = $("#input3").val();
         
         var myDate = new Date();
-        var current_time = myDate.toLocaleTimeString();
+        year = myDate.getFullYear();
+        month = myDate.getMonth()+1;
+        day=myDate.getDate();
+        var current_time = year+","+month+","+day;
         
         if (old_password == null || old_password == "" ||
             new_password == null || new_password == "" ||
@@ -22,6 +25,9 @@ jQuery(document).ready(function () {
             return false;
         }
         
+        var send_data = {"password_N": new_password, "password_O": old_password, "modify_time": current_time};
+        console.log(send_data);
+        
         if (new_password.length <= 6 || new_password.length >= 20) {
             alert("密码长度不合理(应在6和20之间)");
             document.getElementById("input1").reset();
@@ -35,11 +41,7 @@ jQuery(document).ready(function () {
                 type:"POST",
                 contentType:"application/x-www-form-urlencoded",
                 url:"http://localhost:8090/h_user/h_information_modify",
-                data:{
-                    "password_N":new_password,
-                    "password_O":old_password,
-                    "modify_time":current_time
-                },
+                data: send_data,
                 xhrFields:{withCredentials: true},
                 success: function(data){
                     if(data.status == "success"){

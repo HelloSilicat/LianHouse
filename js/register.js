@@ -38,7 +38,10 @@ jQuery(document).ready(function () {
         var city = $("#city").val();
         
         var myDate = new Date();
-        var current_time = myDate.toLocaleTimeString();
+        year = myDate.getFullYear();
+        month = myDate.getMonth()+1;
+        day=myDate.getDate();
+        var current_time = year+","+month+","+day;
         
         var verify_type=$("#select_id").val();
         
@@ -109,15 +112,15 @@ jQuery(document).ready(function () {
                 if(data.status == "success"){
                     alert("注册成功");
                     setTimeout(function(){
-                        window.location.href="/login.html";
+                        window.location.href="login.html";
                     },1000);
                     
                 }else{
-                    alert("注册失败，原因为"+data.data.errMsg);
+                    alert("注册失败!"+data.data.errMsg);
                 }
             },
             error:function (data) {
-                alert("注册失败，原因为"+data.responseText);
+                alert("注册失败!"+data.responseText);
             }
         });
         return false;

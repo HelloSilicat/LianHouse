@@ -10,8 +10,12 @@ jQuery(document).ready(function () {
         var rent_money=$("#rent_money").val();
         var house_description=$("#house_description").val();
         var myDate = new Date();
-        var register_time = myDate.toLocaleTimeString();
+        year = myDate.getFullYear();
+        month = myDate.getMonth()+1;
+        day=myDate.getDate();
+        var current_time = year+","+month+","+day;
         var current_id = getQueryVariable("user_id");
+        var register_time = current_time
 
         if (elevator == "有") {
             elevator = 1;
@@ -19,6 +23,18 @@ jQuery(document).ready(function () {
         else {
             elevator = 0;
         }
+
+        /*if (pay_method == "月") {
+            pay_method == 
+        }
+        if (pay_method == "季") {
+            pay_method == 1;
+        }
+        if (pay_method == "年") {
+            pay_method == 2;
+        }*/
+
+
 
         var debugInfo = "city="+city+"\n";
         debugInfo += "community="+community+"\n";
@@ -32,21 +48,21 @@ jQuery(document).ready(function () {
         debugInfo += "register_time="+register_time+"\n";
         debugInfo += "current_id="+current_id;
 
-        alert(debugInfo)
+        console.log(debugInfo)
         
         $.ajax({
             type:"POST",
             contentType:"application/x-www-form-urlencoded",
-            url:"http://localhost:8090/h_create",
+            url:"http://localhost:8090/h_askhouse/h_askcreate",
             data:{
-                "elevator": elevator,
+                "elevator": parseInt(elevator),
                 "cash_pledge": cash_pledge,
                 "pay_method": pay_method,
-                "rent_money": rent_money,
+                "rent_money": parseInt(rent_money),
                 "city": city,
                 "community": community,
                 "house_type": house_type,
-                "floor": floor,
+                "floor": parseInt(floor),
                 "house_description": house_description,
                 "register_time": register_time
             },

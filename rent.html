@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script type="text/javascript" src="js/retina.min.js"></script>
     <script src="js/rent.js"></script>
 </head>
 <body >
@@ -119,9 +120,14 @@
     <el-input id="area" placeholder="单位：平方米" v-model="form.name5"  ></el-input>
     </el-col>
   </el-form-item>
+  <el-form-item  label="支付方式">
+    <el-col :span="11">
+    <el-input id="pay_method" placeholder="（月、季、年）"></el-input>
+    </el-col>
+  </el-form-item>
   <el-form-item label="租金">
     <el-col :span="11">
-    <el-input id="rent_money" placeholder="单位：元" v-model="form.nam6"  ></el-input>
+    <el-input id="rent_money" placeholder="单位：元" v-model="form.name6"  ></el-input>
     </el-col>
   </el-form-item>
   <el-form-item label="押金方式">
@@ -129,13 +135,7 @@
     <el-input id="cash_pledge" placeholder="请填写押金方式（N个月）"  v-model="form.name7"></el-input>
     </el-col>
   </el-form-item>
-  <el-form-item label="支付方式">
-    <el-radio-group id="pay_ratio" v-model="form.resource1">
-      <el-radio label="月"></el-radio>
-      <el-radio label="季"></el-radio>
-      <el-radio label="年"></el-radio>
-    </el-radio-group>
-  </el-form-item>
+  
   <el-form-item label="电梯情况">
     <el-radio-group id="elevator_ratio" v-model="form.resource2">
       <el-radio label="无"></el-radio>
@@ -149,12 +149,15 @@
       <el-radio label="三居及以上"></el-radio>
     </el-radio-group>
   </el-form-item>
+  <el-form-item label="房屋照片">
+    <el-col :span="111">
+    <el-input id="house_pic" placeholder="请输入url"></el-input>
+    </el-col>
+  </el-form-item>
   <el-form-item label="房屋描述">
     <el-input id="house_description" type="textarea" v-model="form.desc"></el-input>
   </el-form-item>
-  <el-form-item id="upload" label="房屋照片">
-
-  </el-form-item>
+  
   
 <el-form-item>
     <el-button id="rent" type="primary">立即发布</el-button>
@@ -226,7 +229,8 @@ data() {
           resource1: '',
           resource2: '',
           resource3: '',
-          desc: ''
+          desc: '',
+          desc1: ''
         }
         
       }
